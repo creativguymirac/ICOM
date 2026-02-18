@@ -62,7 +62,7 @@
 						<p>Cette micro-entreprise a été créée dans le but de proposer mes compétences et mon expérience afin d’accompagner
           				les professionnels dans la création de supports de communication imprimés et digitaux.</p>
 
-						<a href="https://www.behance.net/hugochatry1" target="_blank" class="btn-intro">Découvrez mon Behance</a>
+						<a href="https://www.behance.net/hugochatry1" rel="noopener noreferrer" target="_blank" class="btn-intro">Découvrez mon Behance</a>
       				</div>
     			</div>
 			</div>
@@ -84,7 +84,7 @@
           					<h3 class="service-title">Mise en page automatisée</h3>
           					<p>En seulement quelques clics, l’ensemble de votre document est généré automatiquement,
             				offrant un résultat structuré et cohérent.</p>
-							<i>Catalogues, brochures, fiches techniques, étiquettes, cartes de visite, etc.</i>
+							<em>Catalogues, brochures, fiches techniques, étiquettes, cartes de visite, etc.</em>
         				</div>
       				</article>
       				<article class="service-card">
@@ -95,7 +95,7 @@
           					<h3 class="service-title">Support digital</h3>
           					<p>Placez la créativité au cœur de vos documents digitaux et offrez à vos clients
 							une expérience innovante et immersive.</p>
-							<i>Magazines, dossiers de presse, plaquettes, rapports, brochures, etc.</i>	
+							<em>Magazines, dossiers de presse, plaquettes, rapports, brochures, etc.</em>	
         				</div>
       				</article>
 					<article class="service-card">
@@ -106,7 +106,7 @@
          					 <h3 class="service-title">Support d’impression</h3>
 							<p>Chaque support est conçu avec précision pour refléter votre identité, renforcer
             				votre message et offrir un rendu final de qualité.</p>
-							<i>Brochures, dépliants, flyers, affiches, cartes de visite, kakémonos, etc.</i>
+							<em>Brochures, dépliants, flyers, affiches, cartes de visite, kakémonos, etc.</em>
         				</div>
       				</article>
 				</div>
@@ -139,12 +139,12 @@
 
 							<div class="form-group">
 								<label for="email">E-mail</label>
-								<input type="text" id="email" name="email" required>
+								<input type="email" id="email" name="email" required>
 							</div>
 
 							<div class="form-group">
-								<label for="prenom">Téléphone</label>
-								<input type="text" id="téléphone" name="téléphone" required>
+								<label for="telephone">Téléphone</label>
+								<input type="tel" id="telephone" name="telephone">
 							</div>
 
 							<div class="form-group">
@@ -169,64 +169,11 @@
 				<p>© Studio Icom · Tous droits réservés</p>
 			</div>
 			<div class="footer-col footer-author">
-				<p>Créé et développé par <a href="https://www.linkedin.com/in/hugo-chatry-127011148/" target="_blank">Hugo Chatry</a></p>
+				<p>Créé et développé par <a href="https://www.linkedin.com/in/hugo-chatry-127011148/" rel="noopener noreferrer" target="_blank">Hugo Chatry</a></p>
 			</div>
 		</div>
 	</footer>
-	<script>
-  		const navToggle = document.getElementById('nav-toggle');
-  		const navLinks = document.querySelectorAll('.main-nav a');
 
-  		navLinks.forEach(link => {
-    		link.addEventListener('click', () => {
-      			if (navToggle.checked) {
-       				navToggle.checked = false;}
-    		});
-  		});
-	</script>
-
-	<script>
-		const phrases = [
-  			"de mise en page automatisée.",
-  			"de support digital.",
-  			"de support d’impression."];
-
-		let i = 0;        
-		let j = 0;        
-		let current = "";
-		let isDeleting = false;
-		const speed = 60;   
-		const eraseSpeed = 35;
-		const delayBetweenPhrases = 2000;   
-
-		function typeEffect() {
-			const element = document.getElementById("typewriter");
-			const currentPhrase = phrases[i];
-
-			if (!isDeleting) {
-
-    			element.textContent = currentPhrase.slice(0, j + 1);
-    			j++;
-
-    			if (j === currentPhrase.length) {
-      			setTimeout(() => {
-        			isDeleting = true;
-        			typeEffect();
-      			}, delayBetweenPhrases);
-      			return;}
-  			} else {
-    		element.textContent = currentPhrase.slice(0, j - 1);
-			j--;
-
-			if (j === 0) {
-    			isDeleting = false;
-      			i = (i + 1) % phrases.length;}
-			}
-
-  			setTimeout(typeEffect, isDeleting ? eraseSpeed : speed);}
-
-		typeEffect();
-	</script>
-
+	<script type="module" src="script.js"></script>
 </body>
 </html>

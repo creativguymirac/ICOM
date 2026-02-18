@@ -1,76 +1,9 @@
-@font-face {
-  font-family: "KohinoorLatin";
-  src: url("./_FONT/kohinoor-font-family/KohinoorLatin-Light.otf") format("opentype");
-  font-weight: 300;
-  font-style: normal;}
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-@font-face {
-  font-family: "KohinoorLatin";
-  src: url("./_FONT/kohinoor-font-family/KohinoorLatin-LightItalic.otf") format("opentype");
-  font-weight: 300;
-  font-style: italic;}
-
-@font-face {
-  font-family: "KohinoorLatin";
-  src: url("./_FONT/kohinoor-font-family/KohinoorLatin-Book.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;}
-
-@font-face {
-  font-family: "KohinoorLatin";
-  src: url("./_FONT/kohinoor-font-family/KohinoorLatin-BookItalic.otf") format("opentype");
-  font-weight: 400;
-  font-style: italic;}
-
-@font-face {
-  font-family: "KohinoorLatin";
-  src: url("./_FONT/kohinoor-font-family/KohinoorLatin-Demi.otf") format("opentype");
-  font-weight: 500;
-  font-style: normal;}
-
-@font-face {
-  font-family: "KohinoorLatin";
-  src: url("./_FONT/kohinoor-font-family/KohinoorLatin-DemiItalic.otf") format("opentype");
-  font-weight: 500;
-  font-style: italic;}
-
-@font-face {
-  font-family: "KohinoorLatin";
-  src: url("./_FONT/kohinoor-font-family/KohinoorLatin-Medium.otf") format("opentype");
-  font-weight: 600;
-  font-style: normal;}
-
-@font-face {
-  font-family: "KohinoorLatin";
-  src: url("./_FONT/kohinoor-font-family/KohinoorLatin-MediumItalic.otf") format("opentype");
-  font-weight: 600;
-  font-style: italic;}
-
-@font-face {
-  font-family: "KohinoorLatin";
-  src: url("./_FONT/kohinoor-font-family/KohinoorLatin-Bold.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;}
-
-@font-face {
-  font-family: "KohinoorLatin";
-  src: url("./_FONT/kohinoor-font-family/KohinoorLatin-BoldItalic.otf") format("opentype");
-  font-weight: 700;
-  font-style: italic;}
-
-@font-face {
-  font-family: "KohinoorLatin";
-  src: url("./_FONT/kohinoor-font-family/KohinoorLatin-Black.otf") format("opentype");
-  font-weight: 800;
-  font-style: normal;}
-
-@font-face {
-  font-family: "KohinoorLatin";
-  src: url("./_FONT/kohinoor-font-family/KohinoorLatin-BlackItalic.otf") format("opentype");
-  font-weight: 800;
-  font-style: italic;}
-
-html {scroll-behavior: smooth;}
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 :root{
   --primary: #1E1D1C;
@@ -86,7 +19,7 @@ html {scroll-behavior: smooth;}
   box-sizing: border-box;}
 
 body{
-  font-family: "KohinoorLatin", sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: var(--background);
   color: var(--primary);
   line-height: 1.5;}
@@ -127,7 +60,7 @@ section {scroll-margin-top: 60px;}
 
 .logo img{
   display: block;
-  height: 50px;}
+  height: 70px;}
 
 .main-nav ul{
   list-style: none;
@@ -158,7 +91,7 @@ section {scroll-margin-top: 60px;}
   align-items: center;
   justify-content: center;
   background-color: var(--secondary);
-  padding: 0.4rem 1.5rem 0.6rem;
+  padding: 0.6rem 1.5rem;
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none;
@@ -213,9 +146,9 @@ section {scroll-margin-top: 60px;}
 
   .main-nav {
     position: absolute;
+    width: 100vw;
     top: 100%;
-    right: 0;
-    left: 0;
+    left: 0%;
     background-color: var(--background);
     border-bottom: 1px solid var(--line);
     transform: translateY(-100%);
@@ -286,7 +219,7 @@ section {scroll-margin-top: 60px;}
   justify-content: center;
   background-color: var(--secondary);
   color: var(--background);
-  padding: 0.6rem 2.5rem 0.8rem;
+  padding: 0.8rem 2.5rem;
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none;
@@ -392,7 +325,7 @@ section {scroll-margin-top: 60px;}
   justify-content: center;
   background-color: var(--secondary);
   color: var(--background);
-  padding: 0.6rem 1.5rem 0.8rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none;
@@ -466,7 +399,7 @@ section {scroll-margin-top: 60px;}
   line-height: 1.5;
   margin-bottom: 0.4rem;}
 
-.service-text i {
+.service-text em {
   display: block;
   font-size: 0.85rem;
   font-weight: 300;
@@ -536,7 +469,7 @@ section {scroll-margin-top: 60px;}
 
 .form-group input,
 .form-group textarea {
-  font-family: "KohinoorLatin", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 0.95rem;
   padding: 0.5rem 0.7rem;
   border-radius: 3px;
@@ -549,13 +482,13 @@ section {scroll-margin-top: 60px;}
   border-color: var(--secondary);}
 
 .btn-send {
-  font-family: "KohinoorLatin", sans-serif;
+  font-family: "Inter", sans-serif;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background-color: var(--secondary);
   color: var(--background);
-  padding: 0.5rem 1.5rem 0.7rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 5px;
   border: none;
   text-transform: uppercase;
