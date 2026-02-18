@@ -551,6 +551,23 @@ section {scroll-margin-top: 60px;}
 
 .footer-copy, .footer-author, .footer-nav {font-size: 0.85rem;}
 
+.footer-menu ul li{
+    list-style: none;
+}
+
+.footer-menu ul li a{
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 0.85rem;
+}
+
+.footer-menu ul li a:hover {
+    text-decoration: none;
+    color: #1E1D1C;
+    font-weight: 400;
+}
+
 .footer-nav a{
   color: var(--background);
   text-decoration: underline;
@@ -575,3 +592,38 @@ section {scroll-margin-top: 60px;}
     text-align: center;}
 }
 /*---FOOTER END---*/
+
+
+/* --- Legals Page --- */
+
+        .legal-page {
+            max-width: 800px;
+            margin: 7rem auto 2rem auto;
+            padding: 1rem;
+            font-family: sans-serif;
+            line-height: 1.6;
+        }
+        .legal-page h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .legal-page h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.3rem;
+        }
+        .legal-page p, .legal-page address {
+            margin-bottom: 1rem;
+        }
+        .legal-page address {
+            font-style: normal;
+        }
+        .legal-page a {
+            color: #0066cc;
+        }
+        .legal-page .back-link {
+            margin-top: 3rem;
+            text-align: center;
+        }
