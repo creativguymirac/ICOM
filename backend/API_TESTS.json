@@ -1,0 +1,177 @@
+{
+  "info": {
+    "name": "Studio Icom Contact API",
+    "description": "API pour tester le formulaire de contact"
+  },
+  "requests": [
+    {
+      "name": "Test - Succès",
+      "method": "POST",
+      "url": "http://localhost:3001/api/contact",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "nom": "Dupont",
+        "prenom": "Jean",
+        "email": "jean.dupont@example.com",
+        "telephone": "+33 6 12 34 56 78",
+        "message": "Bonjour, je suis intéressé par vos services de mise en page automatisée pour mon entreprise. Pouvez-vous me contacter avec une proposition ?"
+      },
+      "expected_response": {
+        "success": true,
+        "message": "Votre message a été envoyé avec succès. Nous vous recontacterons bientôt."
+      }
+    },
+    {
+      "name": "Test - Email invalide",
+      "method": "POST",
+      "url": "http://localhost:3001/api/contact",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "nom": "Martin",
+        "prenom": "Sophie",
+        "email": "email-invalide",
+        "telephone": "",
+        "message": "Test avec email invalide"
+      },
+      "expected_response": {
+        "success": false,
+        "errors": [
+          {
+            "field": "email",
+            "message": "Email invalide"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Test - Nom trop court",
+      "method": "POST",
+      "url": "http://localhost:3001/api/contact",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "nom": "A",
+        "prenom": "Test",
+        "email": "test@example.com",
+        "message": "Message avec nom trop court"
+      },
+      "expected_response": {
+        "success": false,
+        "errors": [
+          {
+            "field": "nom",
+            "message": "Le nom doit avoir entre 2 et 100 caractères"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Test - Message trop court",
+      "method": "POST",
+      "url": "http://localhost:3001/api/contact",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "nom": "Laurent",
+        "prenom": "Marc",
+        "email": "marc@example.com",
+        "message": "Court"
+      },
+      "expected_response": {
+        "success": false,
+        "errors": [
+          {
+            "field": "message",
+            "message": "Le message doit avoir entre 10 et 5000 caractères"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Test - Caractères spéciaux invalides",
+      "method": "POST",
+      "url": "http://localhost:3001/api/contact",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "nom": "Martin123",
+        "prenom": "Test",
+        "email": "test@example.com",
+        "message": "Message valide ici"
+      },
+      "expected_response": {
+        "success": false,
+        "errors": [
+          {
+            "field": "nom",
+            "message": "Le nom contient des caractères non valides"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Test - Avec accents français",
+      "method": "POST",
+      "url": "http://localhost:3001/api/contact",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "nom": "Prévost",
+        "prenom": "François",
+        "email": "francois@example.com",
+        "telephone": "+33 7 89 01 23 45",
+        "message": "Bonjour, ceci est un message avec des accents: éèêë, àâä, îï, ôö, ùûü"
+      },
+      "expected_response": {
+        "success": true,
+        "message": "Votre message a été envoyé avec succès. Nous vous recontacterons bientôt."
+      }
+    },
+    {
+      "name": "Test - Spam (répétition)",
+      "method": "POST",
+      "url": "http://localhost:3001/api/contact",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "nom": "Test",
+        "prenom": "User",
+        "email": "test@example.com",
+        "message": "aaaaaaaaaa"
+      },
+      "expected_response": {
+        "success": false,
+        "message": "Le message ne semble pas valide"
+      }
+    },
+    {
+      "name": "Health Check",
+      "method": "GET",
+      "url": "http://localhost:3001/health",
+      "expected_response": {
+        "status": "OK",
+        "timestamp": "2026-02-18T..."
+      }
+    }
+  ],
+  "curl_examples": {
+    "success": "curl -X POST http://localhost:3001/api/contact -H 'Content-Type: application/json' -d '{\"nom\":\"Dupont\",\"prenom\":\"Jean\",\"email\":\"jean@example.com\",\"telephone\":\"+33 6 12 34 56 78\",\"message\":\"Bonjour, j'aimerais discuter de vos services de mise en page automatisée.\"}'",
+    "invalid_email": "curl -X POST http://localhost:3001/api/contact -H 'Content-Type: application/json' -d '{\"nom\":\"Test\",\"prenom\":\"User\",\"email\":\"invalid-email\",\"message\":\"Test message'}'",
+    "health": "curl http://localhost:3001/health"
+  },
+  "postman_instructions": [
+    "1. Importer ce fichier dans Postman",
+    "2. Assurez-vous que le serveur est démarré: npm run dev",
+    "3. Exécuter les tests pour valider l'API",
+    "4. Vérifier les logs du serveur pour les détails"
+  ]
+}
