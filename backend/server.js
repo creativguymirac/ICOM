@@ -4,11 +4,17 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import { body, validationResult } from 'express-validator';
 import nodemailer from 'nodemailer';
+import path from 'path';                 // 👈 Ajouté pour gérer les chemins
+import { fileURLToPath } from 'url'; 
 
 dotenv.config();
 
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const PORT = process.env.PORT || 3001;
 
 // ============================================
@@ -265,6 +271,32 @@ Message: ${messageSanitized}
       message: 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer plus tard.' 
     });
   }
+});
+
+// ============================================
+// GESTION DES ROUTES API NON TROUVÉES (404 JSON)
+// ============================================
+app.use('/api', (req, res) => {
+  res.status(404).json({ success: false, message: 'Route API non trouvée' });
+});
+
+// ============================================
+// SERVIR LES FICHIERS STATIQUES DU FRONTEND
+// ============================================
+// 👇 Le dossier "frontend" doit se trouver au même niveau que "backend"
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// ============================================
+// ROUTE CATCH-ALL + ROUTING SINGLE PAGE POUR LE ROUTING DU FRONTEND (SPA)
+// ============================================
+// 👇 Toute requête non gérée par les routes API ou les fichiers statiques
+//    renvoie index.html pour que le routeur frontend prenne le relais
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
+
+app.get('/mentions-legales', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/mentions-legales.html'));
 });
 
 // ============================================
