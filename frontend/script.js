@@ -88,6 +88,13 @@ if (contactForm) {
         body: JSON.stringify(formData)
       });
 
+      // Pour les tests
+      // const response = await fetch('http://localhost:3001/api/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(formData)
+      // });
+
       const data = await response.json();
 
       if (response.ok && data.success) {
