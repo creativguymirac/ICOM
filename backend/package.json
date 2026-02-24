@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Backend sécurisé pour le formulaire de contact",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js"

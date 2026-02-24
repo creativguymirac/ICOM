@@ -1,19 +1,14 @@
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
-import dotenv from 'dotenv';
-import { body, validationResult } from 'express-validator';
-import nodemailer from 'nodemailer';
-import path from 'path';                 // 👈 Ajouté pour gérer les chemins
-import { fileURLToPath } from 'url'; 
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const dotenv = require('dotenv');
+const { body, validationResult } = require('express-validator');
+const nodemailer = require('nodemailer');
+const path = require('path');
 
 dotenv.config();
 
-
 const app = express();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3001;
 
@@ -327,3 +322,5 @@ app.listen(PORT, () => {
   console.log(`📧 Email configuré: ${process.env.EMAIL_USER}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
+
+module.exports = app;
