@@ -286,17 +286,18 @@ app.use('/api', (req, res) => {
 // 👇 Le dossier "frontend" doit se trouver au même niveau que "backend"
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-// ============================================
-// ROUTE CATCH-ALL + ROUTING SINGLE PAGE POUR LE ROUTING DU FRONTEND (SPA)
-// ============================================
-// 👇 Toute requête non gérée par les routes API ou les fichiers statiques
-//    renvoie index.html pour que le routeur frontend prenne le relais
-app.get('*', (req, res) => {
+// Route par défaut pour la page d'accueil
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
 app.get('/mentions-legales', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/mentions-legales.html'));
+});
+
+// Pour toutes les autres routes, rediriger vers index.html (ou erreur 404)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
 // ============================================
